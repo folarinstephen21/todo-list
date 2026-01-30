@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(234, 214, 214);
+}
+
+.header-flex{
+    /* position: fixed; */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    margin: 10px;
+}
+
+.header-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 500px;
+}
+
+ul li {
+    list-style: none;
+    
+}
+
+button {
+    font-size: 1em;
+    padding: 1em;
+    border-radius: 10px;
+    background: #2563eb;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transfrom  0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover{
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 300px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Backdrop (overlay) */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.user-form div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
