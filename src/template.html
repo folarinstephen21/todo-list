@@ -6,18 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+    
+
+
+
     <div class="outer">
         <header class="head">
             <div class="header-flex">
                 <h1>TODO APP</h1>
                 <nav class="header-nav">
-                    <ul class="header-list">
-                        <li><button id="homeBtn">Home</button></li>
-                        <li><button id="projectBtn">Projects</button></li>
-                        <li><button id="tasks" type="button">Add tasks</button></li>
-                        <li><button>Sign up</button></li>
+                    <ul class="header-list" id="navItem">
+                        <li class="nav-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="nav-item project-nav">
+                            <a href="#">Projects</a>
+                            <ul class="dropdown" id="projects" ></ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" id="tasks" >Add Task </a>
+                        </li>
                     </ul>
                 </nav>
+            </div>
+            <div id="projectPanel" class="card-container">
+                <ul class="panel-display"></ul>
             </div>
             
         </header>
@@ -39,8 +52,16 @@
                         <input type="date" name="date" id="date" placeholder="Task title">
                     </div>
                     <div>
-                        <label for="priority">Priority</label>
-                        <input type="text" name="priority" id="priority" placeholder="Task priority">
+                            <select name="priority" id="todoPriority">
+                                <option value="High">High</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">High</option>
+                            </select>
+                    </div>
+                    
+                    <div>
+                        <label for="check">Completed</label>
+                        <input type="checkbox" name="check" id="check" value="false">
                     </div>
 
                     <div>
@@ -52,9 +73,23 @@
             </dialog>
         </section>
 
-        <section class="todo-display"></section>
-        
-        
+        <section class="body-card">
+            <div class="todo-filter card">
+
+                
+            </div>
+            <div class="todo-view card">
+
+            </div>
+            <div class=" card">
+
+            </div>
+        </section>
+
+        <ul class="todo-display"></ul>
+    
     </div>
+
+
 </body>
 </html>

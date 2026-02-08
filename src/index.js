@@ -1,86 +1,51 @@
 import "./style.css";
-import { addTask } from "./add.js";
 
-const todos = [];
-let todoDialog;
-let todoList;
-let closeDialog;
-let userTask;
-
+import { renderTodos, renderPanelTodos } from "./ui/renderTodos.js";
+import { taskHandler } from "./handlers/taskHandler.js";
+import { setupDialog } from "./ui/dialog.js";
+import { setupProjectPanel, testPanel } from "./ui/projectPanel.js";
+import { closeDialog } from "./ui/dialog.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  todoDialog = document.getElementById("todoDialog");
-  todoList = document.querySelector(".todo-display");
-  userTask = document.getElementById("userTask");
-  closeDialog = document.getElementById("closeDialog");
+  // Todo list (shared UI target)
+  const todoDisplay = document.querySelector('.todo-display');
+  const container = document.getElementById("cardContainer");
+  const panelDisplay = document.querySelector(".panel-display")
 
-  todoList.className = "todo";
+  // Dialog + form
+  const dialog = document.getElementById("todoDialog");
+  const form = document.getElementById("userTask");
 
-  const addAction = document.getElementById("tasks");
+    
+  // Buttons
+  const openDialogBtn = document.getElementById("tasks");
+  
+  const projectElement = document.getElementById("projects");
+  
+  const closeDialogBtn = document.getElementById("closeDialog");
+  const homeBtn = document.getElementById("homeBtn")
 
-  addAction.addEventListener("click", () => {
-    todoDialog.showModal();
-  });
+  // Setup dialog open
+  setupDialog(openDialogBtn, dialog);
+  closeDialog(closeDialogBtn, dialog);
 
-  userTask.addEventListener("submit", taskHandler);
+  
+  // Setup form submit
+  form.addEventListener(
+    "submit",
+    taskHandler(todoDisplay, dialog, projectElement)
+  );
 
-  closeDialog.addEventListener("click", () => {
-    todoDialog.close();
-  });
+  // Setup project dropdown panel
+  // setupProjectPanel(
+  //   projectToggleBtn,
+  //   projectPanel,
+  //   todoList
+  // );
+
+
+
+  // Initial render (loads from localStorage)
+  renderTodos(todoDisplay);
+  renderPanelTodos(projectElement);
 });
-
-
-
-function renderTodos() {  
-
-  todoList.innerHTML = "";
-
-  todos.forEach((todo, index) => {
-    const li = document.createElement("li");
-    li.dataset.id = todo.id;
-
-    const info = document.createElement("span");
-    info.textContent =  todo.taskInfo
-
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "Remove";
-    removeBtn.style.marginLeft = "1rem";
-    removeBtn.classList.add("remove-btn");
-
-    removeBtn.addEventListener("click", () => {
-      removeTodo(todo.id);
-    });
-
-    li.appendChild(info);
-    li.appendChild(removeBtn);
-    todoList.appendChild(li);
-  });
-}
-
-function taskHandler(event) {
-  event.preventDefault();
-  
-  const form = event.target;
-
-  const title = form.querySelector("#title").value;
-  
-  const description = form.querySelector("#desc").value;
- 
-  const date = form.querySelector("#date").value;
-  
-  const priority = form.querySelector("#priority").value;
-  
-  const task = new addTask(title, description, date, priority);
-  todos.push(task);
-
-  renderTodos();
-  todoDialog.close();
-}
-
-function removeTodo(todoId) {
-  const index = todos.findIndex(todo => todo.id === todoId);
-  if (index !== -1) {
-    todos.splice(index, 1);
-    renderTodos();
-  }
-}
