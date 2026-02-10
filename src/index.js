@@ -1,7 +1,7 @@
 import "./style.css";
 
 import { renderTodos, renderPanelTodos } from "./ui/renderTodos.js";
-import { taskHandler } from "./handlers/taskHandler.js";
+import { taskHandler, filterHandlers } from "./handlers/taskHandler.js";
 import { setupDialog } from "./ui/dialog.js";
 import { setupProjectPanel, testPanel } from "./ui/projectPanel.js";
 import { closeDialog } from "./ui/dialog.js";
@@ -9,12 +9,17 @@ import { closeDialog } from "./ui/dialog.js";
 document.addEventListener("DOMContentLoaded", () => {
   // Todo list (shared UI target)
   const todoDisplay = document.querySelector('.todo-display');
-  const container = document.getElementById("cardContainer");
-  const panelDisplay = document.querySelector(".panel-display")
-
+  const todayPanel = document.getElementById("todayPanel");
+  const defaultTodos = document.getElementById("default")
+  
   // Dialog + form
   const dialog = document.getElementById("todoDialog");
   const form = document.getElementById("userTask");
+
+  // links
+  const today = document.getElementById("today")
+
+  today.addEventListener("click", filterHandlers(todayPanel))
 
     
   // Buttons
@@ -33,19 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Setup form submit
   form.addEventListener(
     "submit",
-    taskHandler(todoDisplay, dialog, projectElement)
+    taskHandler(defaultTodos, dialog, projectElement)
   );
-
-  // Setup project dropdown panel
-  // setupProjectPanel(
-  //   projectToggleBtn,
-  //   projectPanel,
-  //   todoList
-  // );
 
 
 
   // Initial render (loads from localStorage)
-  renderTodos(todoDisplay);
+  renderTodos(defaultTodos);
   renderPanelTodos(projectElement);
 });

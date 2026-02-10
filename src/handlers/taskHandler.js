@@ -1,13 +1,13 @@
 import Task from "../models/Task.js";
 import { addTodo } from "../state/todoState.js";
-import { renderTodos, renderPanelTodos } from "../ui/renderTodos.js";
+import { renderTodos, renderPanelTodos, renderFilterTodos } from "../ui/renderTodos.js";
 
-export function taskHandler(todoDisplay, dialog, projectPanel) {
+export function taskHandler(defaultTodo, dialog, projectPanel) {
   return function (event) {
     event.preventDefault();
 
     const form = event.target;
-
+    console.log(form.date.value)
     const task = new Task(
       form.title.value,
       form.desc.value,
@@ -17,9 +17,16 @@ export function taskHandler(todoDisplay, dialog, projectPanel) {
     );
 
     addTodo(task);
-    renderTodos(todoDisplay);
+    renderTodos(defaultTodo);
     renderPanelTodos(projectPanel)
     dialog.close();
     form.reset();
   };
+}
+
+export function filterHandlers(todayPanel){
+  return function(event){
+    event.preventDefault();
+    renderFilterTodos(todayPanel);
+  }
 }

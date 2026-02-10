@@ -155,13 +155,63 @@ dialog::backdrop {
     border-radius: 50px;
 }
 
-.todo-filter{
-    background-color: #333;
+.wrapper{
+    display: flex;
+    gap: 20px;
+    padding-inline-start: 20px;
 }
 
-/* .extra{
-    background-color: #ecb615e4;
-    position: absolute;
-    top: 50px;
-   
-} */
+.today-panel{
+    width: 95%;
+    border: 1px solid rgb(246, 151, 151);
+    border-radius: 20px;
+    margin-inline-start: 10px;
+}
+
+.timelog a {
+    font-size: 1.5rem;
+    transition: color ;
+}
+
+.today-list{
+    font-size: 1.3rem;
+    padding-block: 0.6rem;
+}
+
+.todo-view h2{
+    margin-top: 15px;
+    padding-inline-start: 20px;
+    color: #0d065e;
+}
+
+hr{
+    margin-top: 20px;
+}
+
+.default-wrap{
+    padding-inline-start: 10px;
+    padding-block-start: 5px;
+}
+
+.default-list{
+    padding: 1rem;
+    padding-block: 0.8rem;
+    transition: color 0.1s ease-in;
+    font-size: 1rem;
+    
+}
+
+.default-list:hover{
+    color: red;
+    
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.no-todo {
+    padding-inline-start: 15px;
+    padding-block: 10px;
+}
