@@ -128,7 +128,6 @@ dialog::backdrop {
     color: black;
     font-size: 1em;
     text-align: center;
-
 }
 
 .show{
@@ -150,7 +149,6 @@ dialog::backdrop {
 }
 
 .card{
-    
     box-shadow: 0 8px 16px hsla(218, 94%, 45%, .2);
     border-radius: 50px;
 }
@@ -186,6 +184,11 @@ dialog::backdrop {
 
 hr{
     margin-top: 20px;
+    height: 5px;
+    background-color: #666565dc;
+    padding-inline: 10px;
+    margin-inline: 10px;
+    border-radius: 15px;
 }
 
 .default-wrap{
@@ -198,12 +201,10 @@ hr{
     padding-block: 0.8rem;
     transition: color 0.1s ease-in;
     font-size: 1rem;
-    
 }
 
 .default-list:hover{
     color: red;
-    
 }
 
 .completed {
