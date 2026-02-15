@@ -21,7 +21,7 @@ body{
     flex-direction: row;
     /* justify-content: space-around; */
     gap: 50px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 500px;
 }
 

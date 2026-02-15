@@ -1,4 +1,5 @@
 import { getTodos, removeTodo, updateTodo } from "../state/todoState.js";
+import {getProjects} from "../state/projectState.js"
 import { compareAsc, format } from "date-fns";
 const projects = document.getElementById("projects")
 
@@ -24,6 +25,18 @@ export function renderTodos(defaultElement ) {
     li.appendChild(info);
     defaultElement.appendChild(li);
   });
+};
+
+export function renderProject(defaultElement){
+  defaultElement.innerHTML = "";
+  const projects = getProjects();
+
+  projects.forEach(project => {
+    const option = document.createElement("option")
+    option.value = project.name;
+    option.innerText = project.name;
+    defaultElement.appendChild(option)
+  })
 }
 
 

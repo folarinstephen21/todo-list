@@ -21,13 +21,13 @@
                         </li>
                         <li class="nav-item project-nav">
                             <a href="#">Tasks</a>
-                            <ul class="dropdown" id="tasks" ></ul>
+                            <ul class="dropdown" id="projects" ></ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" id="projects">projects </a>
+                            <a href="#" id="tasks" >Add Task </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" id="tasks">Add Task </a>
+                            <a href="#" id="alpha" >Add Projects </a>
                         </li>
                     </ul>
                 </nav>
@@ -61,11 +61,39 @@
                                 <option value="Medium">High</option>
                             </select>
                     </div>
+
+                    <div>
+                        <label for="project">project</label>
+                        <select name="project" id="addProjects">
+                            
+                        </select>
+                    </div>
                     
                     <div>
                         <label for="check">Completed</label>
                         <input type="checkbox" name="check" id="check" value="false">
                     </div>
+
+
+
+                    <div>
+                        <button type="submit">Add Task</button>
+                        <button type="button" id="closeDialog">Cancel</button>
+                    </div>
+                    
+                </form>
+            </dialog>
+        </section>
+
+        <section class="project-dialog">
+            <dialog id="projectDialog">
+                <form id="userProjectForm" class="user-form" method="dialog">
+                    <h2>Add a new Project</h2>
+                    <div>
+                        <label for="name">Title</label>
+                        <input type="text" name="name" id="projectTitle" placeholder="Project title">
+                    </div>
+                  
 
                     <div>
                         <button type="submit">Add Book</button>
@@ -88,6 +116,9 @@
                     </li>
                     <li class="tomorrow">
                         <a href="#" id="tomorrow">Tomorrow</a>
+                        <ul id="tomorrowPanel" class="tomorrow-panel">
+                            
+                        </ul>
 
                     </li>
             
