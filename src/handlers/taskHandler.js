@@ -1,5 +1,6 @@
 import Task from "../models/Task.js";
 import { addTodo } from "../state/todoState.js";
+import {addProject} from "../state/projectState.js"
 import { renderTodos, renderPanelTodos, renderFilterTodos } from "../ui/renderTodos.js";
 
 export function taskHandler(defaultTodo, dialog, projectPanel) {

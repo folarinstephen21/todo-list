@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Buttons
   const openDialogBtn = document.getElementById("tasks");
   
-  const projectElement = document.getElementById("projects");
+  const taskElement = document.getElementById("tasks");
   
   const closeDialogBtn = document.getElementById("closeDialog");
   const homeBtn = document.getElementById("homeBtn")
@@ -38,12 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Setup form submit
   form.addEventListener(
     "submit",
-    taskHandler(defaultTodos, dialog, projectElement)
+    taskHandler(defaultTodos, dialog, taskElement)
   );
 
 
 
   // Initial render (loads from localStorage)
   renderTodos(defaultTodos);
-  renderPanelTodos(projectElement);
+  renderPanelTodos(taskElement);
 });
